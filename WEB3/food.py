@@ -7,8 +7,8 @@ def add_food(name, price):
     }
     food_collection.insert_one(new_food)
 
-def get():
-    food_list = food_collection.find()
+def get(query): #filter, limit, skip
+    food_list = food_collection.find(query)
     return food_list
 
 if __name__ == "__main__":    
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     food_list = food_collection.find(
         {
             "price": { "$gt":25000 },
-        }
+        } # query
     )
     # print(food_list[1]["name"])
     # print(food_list[1]["price"])
